@@ -2,8 +2,8 @@
 
 [![Discord](https://img.shields.io/discord/1182595891576717413?label=Discord&logo=discord&color=7289da)](https://discord.gg/kt4AMpV8WV)
 [![Docker](https://img.shields.io/docker/v/cratis/chronicle-mcp?label=Chronicle&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/chronicle-mcp)
-[![C# Build](https://github.com/cratis/Chronicle-Mcp/actions/workflows/build.yml/badge.svg)](https://github.com/Cratis/Chronicle.Mcp/actions/workflows/build.yml)
-[![Publish](https://github.com/cratis/Chronicle-Mcp/actions/workflows/publish.yml/badge.svg)](https://github.com/Cratis/Chronicle.Mcp/actions/workflows/publish.yml)
+[![Build](https://github.com/Cratis/Chronicle.Mcp/actions/workflows/build.yml/badge.svg)](https://github.com/Cratis/Chronicle.Mcp/actions/workflows/build.yml)
+[![Publish](https://github.com/cratis/Chronicle.Mcp/actions/workflows/publish.yml/badge.svg)](https://github.com/Cratis/Chronicle.Mcp/actions/workflows/publish.yml)
 
 ## Using
 
