@@ -30,11 +30,9 @@ For the global user settings, you simply do the following:
                 "run",
                 "-i",
                 "--rm",
+                "-eCratis__Chronicle__Mcp__ConnectionString=chronicle://host.docker.internal:35000",
                 "cratis/chronicle-mcp"
-            ],
-            "env": {
-                "Cratis__Chronicle__Mcp__ConnectionString": "chronicle://host.docker.internal:35000"
-            }
+            ]
         }
     }
 }
