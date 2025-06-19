@@ -5,7 +5,7 @@ using System.ComponentModel;
 using Cratis.Chronicle.Contracts.Events;
 using ModelContextProtocol.Server;
 
-namespace Cratis.Chronicle.MCP;
+namespace Cratis.Chronicle.Mcp;
 
 /// <summary>
 /// Represents a set of tools for working with event types in Chronicle.

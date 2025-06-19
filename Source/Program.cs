@@ -3,23 +3,38 @@
 
 using Cratis.Chronicle.Connections;
 using Cratis.Chronicle.Contracts;
+using Cratis.Chronicle.Mcp;
 using Cratis.Execution;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 var builder = Host.CreateApplicationBuilder(args);
+
+string[] configSectionPath = ["Cratis", "Chronicle", "Mcp"];
+
+var configSection = ConfigurationPath.Combine(configSectionPath);
+
+builder.Services.AddOptions<McpServerOptions>()
+    .BindConfiguration(configSection);
+
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
 
 builder.Logging.AddConsole(logging => logging.LogToStandardErrorThreshold = LogLevel.Trace);
 builder.Services.TryAddSingleton<ICorrelationIdAccessor, CorrelationIdAccessor>();
 builder.Services.AddSingleton<IChronicleConnection>(sp =>
 {
+    var options = sp.GetRequiredService<IOptions<McpServerOptions>>().Value;
     var lifetime = sp.GetRequiredService<IHostApplicationLifetime>();
     var connectionLifecycle = new ConnectionLifecycle(sp.GetRequiredService<ILogger<ConnectionLifecycle>>());
     var correlationIdAccessor = sp.GetRequiredService<ICorrelationIdAccessor>();
     return new ChronicleConnection(
-        "chronicle://localhost:35000",
+        options.ConnectionString,
         5,
         connectionLifecycle,
         new Cratis.Tasks.TaskFactory(),
@@ -57,4 +72,6 @@ builder.Services
     .WithToolsFromAssembly();
 
 var host = builder.Build();
+
+var connection = host.Services.GetRequiredService<IChronicleConnection>();
 await host.RunAsync();
