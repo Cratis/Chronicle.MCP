@@ -21,4 +21,4 @@ COPY ./Source/out ./out
 RUN echo $PWD
 RUN ./copy-server-files.sh
 
-ENTRYPOINT ["./Cratis.Chronicle.MCP"]
+ENTRYPOINT ["./Cratis.Chronicle.Mcp"]

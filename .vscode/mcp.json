@@ -8,6 +8,19 @@
                 "--project",
                 "${workspaceFolder}/Source/Chronicle.MCP.csproj",
             ]
+        },
+        "Chronicle": {
+            "type": "stdio",
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "cratis/chronicle-mcp"
+            ],
+            "env": {
+                "Cratis__Chronicle__Mcp__ConnectionString": "chronicle://host.docker.internal:35000"
+            }
         }
     }
 }
