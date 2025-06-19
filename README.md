@@ -67,6 +67,19 @@ For a local `mcp.json` file, its almost the same:
 
 You can see this in action in the [mcp.json](./.vscode/mcp.json) in this repository.
 
+## Prompts / Tools
+
+### Event Types
+
+You can ask it things like:
+
+- List all event types in the [put name here] event store
+
+### Observers
+
+- List all observers in the [put name here] event store
+- List all observers in the [put name here] event store and namespace [put namespace here]
+
 ## Local development
 
 Using VSCode, the [mcp.json](./.vscode/mcp.json) in the `.vscode` folder of this repository is automatically supported.
