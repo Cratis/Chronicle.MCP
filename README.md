@@ -67,6 +67,8 @@ For a local `mcp.json` file, its almost the same:
 
 You can see this in action in the [mcp.json](./.vscode/mcp.json) in this repository.
 
+> Note: The `cratis/chronicle-mcp` is a multi CPU architecture image supporting both x64 and arm64 automatically.
+
 ## Prompts / Tools
 
 ### Event Types
