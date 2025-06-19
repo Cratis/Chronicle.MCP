@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Cratis.Chronicle.MCP</RootNamespace>
-    <AssemblyName>Cratis.Chronicle.MCP</AssemblyName>
+    <RootNamespace>Cratis.Chronicle.Mcp</RootNamespace>
+    <AssemblyName>Cratis.Chronicle.Mcp</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cratis.Chronicle.Connections" />
