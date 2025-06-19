@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+#pragma warning disable CA1848 // Allow using Log methods directly in the Program class
+
 var builder = Host.CreateApplicationBuilder(args);
 
 string[] configSectionPath = ["Cratis", "Chronicle", "Mcp"];
@@ -29,7 +31,9 @@ builder.Logging.AddConsole(logging => logging.LogToStandardErrorThreshold = LogL
 builder.Services.TryAddSingleton<ICorrelationIdAccessor, CorrelationIdAccessor>();
 builder.Services.AddSingleton<IChronicleConnection>(sp =>
 {
+    var logger = sp.GetRequiredService<ILogger<Program>>();
     var options = sp.GetRequiredService<IOptions<McpServerOptions>>().Value;
+    logger.LogInformation("Creating Chronicle connection with connection string: {ConnectionString}", options.ConnectionString);
     var lifetime = sp.GetRequiredService<IHostApplicationLifetime>();
     var connectionLifecycle = new ConnectionLifecycle(sp.GetRequiredService<ILogger<ConnectionLifecycle>>());
     var correlationIdAccessor = sp.GetRequiredService<ICorrelationIdAccessor>();
