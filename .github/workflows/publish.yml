@@ -59,8 +59,8 @@ jobs:
           path: ./Source/out/x64
           key: ${{ env.DOTNET_X64_CACHE }}
 
-      - name: Build x64 Kernel - self contained, ready to run
-        working-directory: ./Source/Kernel/Server
+      - name: Build x64 - self contained, ready to run
+        working-directory: ./Source
         run: dotnet publish -c Release -f net9.0 -r linux-x64 -p:PublishReadyToRun=true -p:DisableProxyGenerator=true --self-contained -o out/x64
 
   dotnet-arm64:
@@ -82,8 +82,8 @@ jobs:
           path: ./Source/out/arm64
           key: ${{ env.DOTNET_ARM64_CACHE }}
 
-      - name: Build arm64 Kernel - self contained, ready to run
-        working-directory: ./Source/Kernel/Server
+      - name: Build arm64 - self contained, ready to run
+        working-directory: ./Source
         run: dotnet publish -c Release -f net9.0 -r linux-arm64 -p:PublishReadyToRun=true -p:DisableProxyGenerator=true --self-contained -o out/arm64
 
   release:
@@ -116,20 +116,14 @@ jobs:
       - uses: actions/cache@v3
         id: dotnet-x64-output
         with:
-          path: ./Source/Kernel/Server/out/x64
+          path: ./Source/out/x64
           key: ${{ env.DOTNET_X64_CACHE }}
 
       - uses: actions/cache@v3
         id: dotnet-arm64-output
         with:
-          path: ./Source/Kernel/Server/out/arm64
+          path: ./Source/out/arm64
           key: ${{ env.DOTNET_ARM64_CACHE }}
-
-      - uses: actions/cache@v3
-        id: workbench-output
-        with:
-          path: ./Source/Workbench/Web/wwwroot
-          key: ${{ env.WORKBENCH_CACHE }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@master
