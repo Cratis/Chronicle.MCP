@@ -69,7 +69,7 @@ You can see this in action in the [mcp.json](./.vscode/mcp.json) in this reposit
 
 ## Local development
 
-Using VSCode, the [mcp.json](./.vscode/mcp.json) is automatically detected.
+Using VSCode, the [mcp.json](./.vscode/mcp.json) in the `.vscode` folder of this repository is automatically supported.
 Open it and click the **Start** button:
 
 ![](./images/start.png)
