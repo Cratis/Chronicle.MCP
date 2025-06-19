@@ -18,7 +18,7 @@ public static class ObserverTools
     /// </summary>
     /// <param name="observers">The <see cref="IObservers"/> to use.</param>
     /// <param name="eventStore">The name of the event store to get observers from.</param>
-    /// <returns>A collection of <see cref="ObserverInformation"/> for the specified
+    /// <returns>A collection of <see cref="ObserverInformation"/> for the specified.</returns>
     [McpServerTool, Description("Gets all observers for a specific event store and optional namespace.")]
     public static Task<IEnumerable<ObserverInformation>> GetObservers(IObservers observers, string eventStore) =>
         GetObserversForNamespace(observers, eventStore);
