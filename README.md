@@ -88,3 +88,12 @@ Open it and click the **Start** button:
 During development, compile and click the **Restart** button when having the `mcp.json` open:
 
 ![](./images/restart.png)
+
+### Chronicle
+
+To get Chronicle running, there is a `docker-compose.yml` file in the `Source` folder.
+Simply do `docker compose up -d` and you'll have a Chronicle instance running.
+
+If you want some data, we recommend using our [samples](https://github.com/cratis/samples) and
+specifically the [console](https://github.com/Cratis/Samples/tree/main/Chronicle/Quickstart/Console) to initialize
+it with some data.
