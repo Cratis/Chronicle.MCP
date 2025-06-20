@@ -49,11 +49,8 @@ builder.Services.AddSingleton<IChronicleConnection>(sp =>
 
 builder.Services.AddSingleton(sp =>
 {
-    var connection = sp.GetRequiredService<IChronicleConnection>();
-    var properties = typeof(ChronicleConnection).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).ToArray();
-    var property = properties.FirstOrDefault(p => p.Name.EndsWith("Services"));
-    var services = property?.GetMethod?.Invoke(connection, null) as IServices;
-    return services!;
+    var connection = (sp.GetRequiredService<IChronicleConnection>() as IChronicleServicesAccessor)!;
+    return connection.Services;
 });
 
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IServices>().EventStores);
@@ -76,6 +73,4 @@ builder.Services
     .WithToolsFromAssembly();
 
 var host = builder.Build();
-
-var connection = host.Services.GetRequiredService<IChronicleConnection>();
 await host.RunAsync();
