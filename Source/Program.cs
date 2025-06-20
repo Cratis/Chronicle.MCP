@@ -14,7 +14,8 @@ string[] configSectionPath = ["Cratis", "Chronicle", "Mcp"];
 
 var configSection = ConfigurationPath.Combine(configSectionPath);
 
-builder.Services.AddOptions<McpServerOptions>()
+builder.Services
+    .AddOptions<McpServerOptions>()
     .BindConfiguration(configSection);
 
 builder.Configuration
